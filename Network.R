@@ -70,7 +70,7 @@ nodes <- left_join(nodes, louvain_df, by = "label") %>%
   rename(group=V1)
 
 # Visualize network
-(mynetwork <- visNetwork(nodes, edges, height="100%", width="1000px")) %>% 
+(mynetwork <- visNetwork(nodes, edges, height="800px", width="1000px")) %>% 
   visOptions(highlightNearest = TRUE)
 # Export network to html
 htmlwidgets::saveWidget(mynetwork, "network.html")
