@@ -43,9 +43,11 @@ co.key <- udpipe::cooccurrence(keywords_wide, group="id", term="key")
 
 
 # Create an edges dataframe from the existing pairwise co-occurrences.
-edges <- data.frame(from = co.key$term1, 
-                    to = co.key$term2, 
-                    value=co.key$cooc)
+edges <- data.frame(from = (co.key$term1), 
+                    to = (co.key$term2), 
+                    value=co.key$cooc) %>% 
+  mutate(from=as.character(from)) %>% 
+  mutate(to=as.character(to))
 
 nodes <- data.frame(id = unique(c(edges$from, edges$to)),
                     label = unique(c(edges$from, edges$to)),
